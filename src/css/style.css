@@ -1,0 +1,181 @@
+/* Styles de base */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar en haut */
+.navbar {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.navbar-image {
+  width: 100px; /* Ajustement taille */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Carte centrale */
+.middle-card {
+  background: linear-gradient(135deg, #2a2a2a, #333);
+  width: 500px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  border-radius: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+/* Effet dynamique de suivi avec la souris */
+.middle-card:hover {
+  transform: translate(-50%, -50%) rotateX(5deg) rotateY(5deg);
+}
+
+/* Icône positionnée au-dessus de la carte avec l'image */
+.profile-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 4px solid #666666;
+  position: absolute;
+  top: -22%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Effet de zoom au survol */
+.profile-icon:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 0 8px #646464, 0 0 16px #6e6e6e, 0 0 24px #969696;
+}
+
+/* Texte centré dans la carte */
+.profile-text {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 
+    0 0 4px #ffffff, 
+    0 0 8px #666666;
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Styles pour la mini carte au survol */
+.mini-card {
+  position: absolute;
+  top: -64%;
+  left:50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background-color: rgba(30, 30, 30, 0.9);
+  color: white;
+  font-size: 12px;
+  font-family: 'Satoshi', sans-serif;
+  display: none; /* Cachée par défaut */
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7); /* Ombre optimisée */
+  border-radius: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Afficher la mini carte uniquement quand la souris est sur le texte */
+.profile-text:hover .mini-card {
+  display: flex;
+}
+/* Carte audio */
+.audio-card {
+  position: relative; /* Permet de positionner l'icône audio par rapport à cette carte */
+  top: 20px;
+  left: 20px;
+  background-color: #444;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  transition: width 0.4s ease-in-out;
+}
+
+
+/* État étendu sur survol */
+.audio-card.expanded {
+  width: 250px;
+  height: 50px;
+}
+
+/* Icône centrale (mute/unmute) */
+.audio-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+/* La partie dynamique du slider */
+.slider-container {
+  position: relative;
+  height: 8px;
+  flex-grow: 1;
+  margin-left: 10px;
+  border-radius: 4px;
+  background: #ddd;
+  overflow: hidden;
+}
+
+/* La boule audio (curseur flottant) positionnée au-dessus de la barre dynamique */
+.audio-slider-track {
+  position: absolute;
+  height: 16px; /* Taille de la boule */
+  width: 16px;
+  background: #007bff; /* Couleur de la boule */
+  border-radius: 50%;
+  transform: translateX(-50%); /* Pour s'assurer que la boule est centrée sur le curseur */
+  top: -4px; /* Décalage au-dessus de la barre */
+  z-index: 200;
+}
+
+
+/* Le slider lui-même */
+.audio-slider {
+  appearance: none;
+  height: 8px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.audio-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #007bff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
